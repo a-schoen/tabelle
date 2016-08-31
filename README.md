@@ -6,8 +6,8 @@ Setup:
 
 1. adjust file paths (if necessary) in the following files:
 
-- /public_html/ajax/send_ajax.php ("$path")
-- /public_html/lib/js/main.js ("$scope.ajaxUrl" on line 5)
+ /public_html/ajax/send_ajax.php ("$path")
+ /public_html/lib/js/main.js ("$scope.ajaxUrl" on line 5)
 
 2. create mysql table (insert name):
 
@@ -21,6 +21,6 @@ Setup:
 
 3. set database info and table name here:
 
-- /php/config.php
+ /php/config.php
 
 =================================
