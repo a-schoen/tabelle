@@ -1,0 +1,177 @@
+/* ================================ general ================================ */
+html{
+	font-family: Arial, sans-serif;
+	font-size: 100%;
+	background-color: #666;
+}
+body{
+	margin: 0;
+}
+#container{
+	background-color: #fff;
+	margin: 0 auto;
+	max-width: 980px;
+	min-width: 400px;
+}
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+/* ================================ header ================================ */
+#site-header{
+ 	width: 100%;
+	margin: 0 auto;
+	background-color: #333399;
+}
+#site-header h1{
+	color: #fff;
+	margin: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 5%;  
+}
+/* ================================ table ================================ */
+#sort{
+	text-align: left;
+	width: 100%;
+}
+#search{
+	max-width: 40%;
+ 	padding: 5px 10px;
+	float: left;
+}
+#search input{
+	display: inline;
+	max-width: 60%;
+}
+#order{
+	max-width: 40%;
+ 	padding: 5px 10px;
+	float: right;
+}
+#order select{
+	display: inline;
+}
+#main-table{
+	table-layout: fixed;
+	width: 100%;
+	margin: 2 auto;
+	text-align: center;
+	background-color: #ccc;
+}
+table{
+	width: 100%;
+}
+table, th, td, tr{
+	border-collapse: collapse;
+}
+th{
+	background-color: #fff;
+}
+td, th{
+	padding: 5px 0;
+	overflow: hidden;
+}
+tr{
+	min-heigth: 20px;
+}
+/* table.inner, */
+table.inner tr{
+	width: 100%;
+	border-top: 1px solid #ccc;
+}
+table.inner td{
+	border-right: 1px solid #666;
+	background-color: #fff;
+}
+table.inner td:last-child{
+	border-right: none;
+}
+.tableNr{
+	width: 2%;
+	font-size: 0.5em;
+}
+.tableDate{
+	width: 10%;
+}
+.tableProject{
+	width: 15%;
+}
+.tableDesc{
+	width: 45%;
+}
+.tableSum{
+	width: 15%;
+}
+.tableBtn{
+	width: 10%;
+}
+input[type="text"],
+input[type="number"],
+textarea{
+	width: 90%;
+}
+.hidden{
+	display: none;
+}
+table.inner .modelRow td,
+#newEntryRow td{
+	background-color: #9f9fdf;
+}
+/* ================================ footer ================================ */
+#site-footer{
+	width: 100%;
+	border: 1px dotted #00f;
+	margin: 2 auto;
+}
+#addBtn{
+	margin: 5px;
+	padding: 3px;
+}
+#total{
+	padding-right: 5%;
+	padding-left: 5%;
+	background-color: #333399;
+	color: #fff;
+	width: 90%;
+}
+#total h3{
+	display: inline-block;
+	float: left;
+}
+#total p{
+	display: inline-block;
+	float: right;
+}
+/* ================================ medium screen ================================ */
+@media screen and (max-width: 800px){
+	table{
+		font-size: 0.8em;
+	}
+}
+/* ================================ small screen ================================ */
+@media screen and (max-width: 600px){
+	#site-header h1{
+		padding-top: 10px;
+		padding-left: 5%;  
+	}
+	#sort{
+		font-size: 0.6em;
+	}
+	.tableDesc{
+		display: none;
+	}
+	.tableSum{
+	width: 10%;
+	}
+	.tableBtn{
+		width: 15%;
+	}
+	td button{
+		font-size: 1em;
+		padding: 0;
+	}
+}

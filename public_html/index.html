@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow"> 
+	<meta name="viewport" content="width=device-width; initital-scale=1.0">
+	<title>Titel</title>
+	<link href="lib/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body ng-app="mainApp">
+
+	<div id="container">
+	
+	<header id="site-header">
+		<h1>Titel</h1>
+	</header>
+
+	<div id="main-table" ng-controller="tableCtrl">
+		
+		<div id="sort" class="clearfix">					<div id="search">				<label>Suchen:</label> <input type="text" ng-model="searchKeyword" placeholder="Suchbegriff eingeben">			</div>						<div id="order">				Tabelle ordnen nach:						<select ng-model="sortTable">						<option value="id">Eintragsnr</option>						<option value="jahre">Jahre</option>						<option value="projekt">Projektname</option>						<option value="beschreibung">Beschreibung</option>						<option value="summe">Summe</option>					</select>			</div>
+		
+		</div>
+		
+		<table>
+			<tr class="titleRow">
+				<th class="tableNr">
+					Nr
+				</th>
+				<th class="tableDate">
+					Datum
+				</th>
+				<th class="tableProject">
+					Projekt
+				</th>
+				<th class="tableDesc">
+					Beschreibung
+				</th>
+				<th class="tableSum">
+					Summe (Euro)
+				</th>
+				<th class="tableBtn">
+					Optionen
+				</th>
+			</tr>
+			<tr class="outer" ng-repeat="item in projects | orderBy:sortTable | filter:searchKeyword">
+				<td colspan="6">
+					<table class="inner">
+						<tr class="showRow">
+							<td class="tableNr">
+								{{item.nr + 1}}
+							</td>
+							<td class="tableDate">
+								{{item.jahre}}
+							</td>
+							<td class="tableProject">
+								{{item.projekt}}
+							</td>
+							<td class="tableDesc">
+								{{item.beschreibung}}
+							</td>
+							<td class="tableSum">
+								{{item.summe | number}}
+							</td>
+							<td class="tableBtn">
+								<button id="{{'editBtn_' + item.nr}}" class="" ng-click="openEditRow(item.nr)">Ändern oder löschen</button>
+								<button id="{{'deleteBtn_' + item.nr}}" class="hidden" ng-click="deleteEntry(item.nr, item.id)">Eintrag löschen</button>
+							</td>
+						</tr>
+						<tr class="modelRow hidden" id="{{'modelRow_' + item.nr}}">
+							<td class="tableNr">
+							</td>
+							<td class="tableDate">
+								<input type="text" name="date" ng-model="item.jahre">
+							</td>
+							<td class="tableProject">
+								<input type="text" name="name" ng-model="item.projekt">
+							</td>
+							<td class="tableDesc">
+								<textarea name="desc" max="500" ng-model="item.beschreibung"></textarea>
+							</td>
+							<td class="tableSum">
+								<input type="text" name="sum" ng-model="item.summe">
+							</td>
+							<td class="tableBtn">
+								<button id="{{'saveBtn_' + item.id}}" ng-click="saveEntry(item.nr)">Speichern</button>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+<!-- 		end ng-repeat -->
+			<tr id="newEntryRow" class="hidden">
+					<td class="tableNr">
+					</td>
+					<td class="tableDate">
+						<input type="text" name="date" ng-model="newEntry.jahre">
+					</td>
+					<td class="tableProject">
+						<input type="text" name="name" ng-model="newEntry.projekt">
+					</td>
+					<td class="tableDesc">
+						<textarea name="desc" ng-model="newEntry.beschreibung"></textarea>
+					</td>
+					<td class="tableSum">
+						<input type="text" name="sum" ng-model="newEntry.summe">
+					</td>
+					<td class="tableBtn">
+						<button class="add" ng-click="addEntry()">Eintrag speichern</button>
+					</td>
+				</tr>
+		</table>
+		
+		<footer id="table-footer">
+			<button id="addBtn" ng-click="openAddEntry()">Neuen Eintrag hinzufügen</button>
+			<div id="total" class="clearfix">
+				<h3>Gesamtsumme:</h3>
+				<p>{{ getTotal() | number }} Euro</p>
+			</div>
+		</footer>
+		
+	</div> <!-- /#main-table -->
+</div><!-- /#container -->
+
+<!-- =========================== js =========================== -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js" type="text/javascript"></script>
+<script src="lib/js/main.js" type="text/javascript"></script>
+</body>
+</html>
